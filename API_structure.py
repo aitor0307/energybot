@@ -9,5 +9,13 @@ JSON_routes = {
     ],
     ('demanda', 'evolucion') : [
         ['included'],
+<<<<<<< HEAD
     ]
 }
+=======
+    ],
+    ('generacion', 'estructura-generacion') : [
+        ['included'],
+    ]
+}
+>>>>>>> 3dca785 (Initial commit)

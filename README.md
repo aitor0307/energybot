@@ -1,5 +1,9 @@
 # The REData API Wrapper
+<<<<<<< HEAD
 
+=======
+Original author: https://github.com/AyrtonB/RED-Electricity-API-Wrapper
+>>>>>>> 3dca785 (Initial commit)
 <br>
 
 This module creates a Python wrapper for the new Red Eléctrica de España electricity data API. Currently the API only has a few streams up and running, for this reason the wrapper has been designed to be highly generalisable as new streams are added.
