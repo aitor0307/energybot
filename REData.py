@@ -15,15 +15,9 @@ from API_structure import *
 
 """
 Wrapper
-<<<<<<< HEAD
 """ 
 class REData:
     ## Calling the API  
-=======
-"""
-class REData:
-    ## Calling the API
->>>>>>> 3dca785 (Initial commit)
     def check_errs(self, r_json):
         if 'errors' in r_json.keys():
             for err in r_json['errors']:
@@ -31,7 +25,6 @@ class REData:
                 err_detail = err['detail']
 
                 raise ValueError(f'{err_title}\n{err_detail}\n')
-<<<<<<< HEAD
                 
     def make_request(self, start_date, end_date, time_trunc, geo_trunc=None, geo_limit=None, geo_ids=None):
         *_, params = inspect.getargvalues(inspect.currentframe())
@@ -43,20 +36,6 @@ class REData:
     ## JSON Parsing
     col_2_s = staticmethod(lambda col: pd.DataFrame(col['attributes']['values']).set_index('datetime')['value'])
     
-=======
-
-    def make_request(self, start_date, end_date, time_trunc, geo_trunc=None, geo_limit=None, geo_ids=None):
-        *_, params = inspect.getargvalues(inspect.currentframe())
-        print(params)
-        r = requests.get(self.url, params=params)
-
-        return r
-
-
-    ## JSON Parsing
-    col_2_s = staticmethod(lambda col: pd.DataFrame(col['attributes']['values']).set_index('datetime')['value'])
-
->>>>>>> 3dca785 (Initial commit)
     def get_from_dict(self, data_dict, map_list):
         return reduce(operator.getitem, map_list, data_dict)
 
@@ -88,20 +67,14 @@ class REData:
         df.index = pd.to_datetime(df.index)
 
         return df
-<<<<<<< HEAD
             
     
-=======
-
-
->>>>>>> 3dca785 (Initial commit)
     ## User Functions
     def update_stream(self, category, widget):
         assert (category, widget) in list(JSON_routes.keys()), f'The widget \'{widget}\' is not allowed for category \'{category}\''
 
         self.JSON_route = JSON_routes[(category, widget)]
         self.url = f'https://apidatos.ree.es/en/datos/{category}/{widget}'
-<<<<<<< HEAD
       
     def query_REData(self, *args, **kwargs):
         r = self.make_request(*args, **kwargs)
@@ -114,28 +87,10 @@ class REData:
         return df
     
     
-=======
-
-    def query_REData(self, *args, **kwargs):
-        r = self.make_request(*args, **kwargs)
-
-        r_json = r.json()
-        self.check_errs(r_json)
-
-        df = self.json_2_df(r_json)
-
-        return df
-
-
->>>>>>> 3dca785 (Initial commit)
     ## Initialisation
     def __init__(self, category, widget):
         self.update_stream(category, widget)
         self.JSON_route = JSON_routes[(category, widget)]
-<<<<<<< HEAD
-        
-    
-=======
 
 """
 Tests:
@@ -152,4 +107,3 @@ df = RED_stream.query_REData(start_date, end_date, time_trunc)
 
 
 """
->>>>>>> 3dca785 (Initial commit)
